@@ -1,0 +1,21 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	/*font-family: 'Federant', cursive;*/
+}
+
+#navbar{
+	background-color: #1c1d1d;
+	padding: 5px;
+	font-family: 'Federant', cursive;
+}
+
+#navbar a{
+	color: #c3a663;
+}
+
+/*#navbar a{
+	color: #c3a663 !important;
+}*/
+
