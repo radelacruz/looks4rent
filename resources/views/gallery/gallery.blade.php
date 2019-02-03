@@ -5,12 +5,9 @@
 	<form action="/search" method="POST" role="search">
 	    {{ csrf_field() }}
 	    <div class="input-group">
-	        <input type="text" class="form-control" name="search"
+	        <input id="search" type="text" class="form-control" name="search"
 	            placeholder="Search...">
 	            <span class="input-group-btn">
-{{-- 	            <button type="submit" class="btn btn-default">
-	                <span class="glyphicon glyphicon-search"></span>
-	            </button> --}}
 				<button class="btn btn-default-sm" type="submit">
 				<i class="fa fa-search"><span class="glyphicon glyphicon-search"></span></i>
 				</button>
@@ -58,35 +55,35 @@
 					@if(isset($details))
 					<div class="row">
 						@foreach($details as $indiv_item)
-						<div class="col-sm-4 my-4 text-center">
-							<div class="card h-100">
-								<div class="card-body">
-									<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:150px">
-									<h5 class="card-title">{{$indiv_item->name}}</h5>
-									@if($indiv_item->available != 0)
-										<p>Available: {{$indiv_item->available}}</p>
-									@else
-										<p class="text-danger">Out of Stocks</p>
-									@endif
-								</div>
-								<div class="card-footer text-center">
-									<form method="POST" action="/addToCart/{{$indiv_item->id}}">
-										{{csrf_field()}}
-										<div class="">
-											@if($indiv_item->available != 0)
-												<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-outline-primary">View Details</a>
-												<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" max="{{$indiv_item->available}}">
-												<button type="submit" class="btn btn-success">Resserve Now</button>
-											@else
-												<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-outline-primary">View Details</a>
-												<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" disabled>
-												<button type="submit" class="btn btn-success" disabled>Add to Cart</button>
-											@endif
-										</div>
-									</form>
+							<div class="col-sm-4 my-4 text-center">
+								<div class="card h-100">
+									<div class="card-body">
+										<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:150px">
+										<h5 class="card-title">{{$indiv_item->name}}</h5>
+										@if($indiv_item->available != 0)
+											<p>Available: {{$indiv_item->available}}</p>
+										@else
+											<p class="text-danger">Out of Stocks</p>
+										@endif
+									</div>
+									<div class="card-footer text-center">
+										<form method="POST" action="/addToCart/{{$indiv_item->id}}">
+											{{csrf_field()}}
+											<div class="">
+												@if($indiv_item->available != 0)
+													<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-outline-primary">View Details</a>
+													<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" max="{{$indiv_item->available}}">
+													<button type="submit" class="btn btn-success">Resserve Now</button>
+												@else
+													<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-outline-primary">View Details</a>
+													<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" disabled>
+													<button type="submit" class="btn btn-success" disabled>Add to Cart</button>
+												@endif
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-						</div>
 						@endforeach
 					</div>
 					@else

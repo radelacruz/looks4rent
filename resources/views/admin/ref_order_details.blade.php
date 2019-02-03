@@ -2,7 +2,7 @@
 @section('title','Order Details')
 @section('content')
 		<div class="container">
-			<h4 class="text-center py-3">Orders Admin Page</h4>
+			<h4 class="text-center py-3">Orders Details</h4>
 			<div class="row">
 				<div class="col-sm-8 offset-sm-2">
 					<table class="table table-responsive table-striped">

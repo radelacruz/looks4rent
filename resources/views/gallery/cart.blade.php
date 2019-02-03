@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('title','Items')
 @section('content')
+
+	{{-- @if ( Auth::check() && Auth::user()->role_id==2 ) --}}
 	<div class="container">
 		<h1 class="text-center">Items</h1>
 			@if(Session::has('cart'))
-
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -61,8 +62,9 @@
 			@endif
 
 			<a href="/gallery" class="btn btn-block btn-primary">Go back to gallery</a>
-		
 	</div>
-
+	{{-- @else --}}
+		{{-- {{header("Location: /error")}} --}}
+	{{-- @endif --}}
 
 @endsection

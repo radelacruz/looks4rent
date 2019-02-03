@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function findItems($id){
 	$category = Category::find($id);
-	$items = $category->accomodations;
-	return view("gallery.gallery",compact("items"));
+	$details = $category->accomodations;
+	return view("gallery.gallery",compact("details"));
     }
 }

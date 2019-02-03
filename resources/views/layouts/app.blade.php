@@ -61,12 +61,12 @@
     {{-- <link rel="stylesheet" type="text/css" href="/css/style.css"> --}}
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="container">
-            <nav id="navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <div id="app" class="container px-0">
+        <div class="container px-0">
+            <nav id="navbar" class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <img class="icon img-fluid" src="/images/looks4rent.png" style="height: 50px">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Looks4Rent
+                    <strong>Looks4Rent</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -88,7 +88,16 @@
                         @guest
                             <li class="nav-item">
                                 <a href="/gallery" class="nav-link">Gallery</a>
-                            </li>  
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/menu/mycart" class="nav-link">Cart<span class="badge text-danger">
+                                    @if(Session::has('cart'))
+                                        {{array_sum(Session('cart'))}}
+                                    @endif
+                                </span></a>
+                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>

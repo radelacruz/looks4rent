@@ -19,20 +19,28 @@ Route::get('/error',function(){
 	return view ('error');
 });
 Route::get('/gallery', "AccomodationController@showGallery");
-Route::get('menu/mycart',"AccomodationController@showCart");
-Route::get('menu/clearcart',"AccomodationController@clearCart");
 Route::any('/search',"AccomodationController@search");
+Route::get('/admin/orders',"AccomodationController@showAdminOrderDetails");
 Route::get('/menu/categories/{id}',"CategoryController@findItems");
-Route::post('/addToCart/{id}',"AccomodationController@addToCart");
-Route::patch('/menu/mycart/{id}/changeQty',"AccomodationController@updateCart");
-Route::delete('menu/mycart/{id}/delete',"AccomodationController@deleteCart");
-Route::get('menu/{id}',"AccomodationController@GalleryDetails");
+Route::get('/admin/orders/approve/{id}', 'AccomodationController@ordersApprove');
+Route::get('/admin/orders/reject/{id}', 'AccomodationController@ordersReject');
+Route::get('/admin/orders/confirm/{id}', 'AccomodationController@ordersConfirm');
 
 
 Route::middleware("auth")->group(function () {
+	Route::get('menu/clearcart',"AccomodationController@clearCart");
+	Route::get('menu/mycart',"AccomodationController@showCart");
 	Route::get('/menu/borrow',"AccomodationController@showBorrowForm");
 	Route::get('/menu/borrow/checkout',"AccomodationController@checkout");
-	Route::get('/orders',"AccomodationController@showOrders");
+	Route::get('/user/orders',"AccomodationController@showUserOrderDetails");
+	Route::any('/user/orders/search',"AccomodationController@userOrdersSearch");
+	Route::get('/user/orders/cancel/{id}', "AccomodationController@ordersCancel");
+	Route::get('/user/orders/return/{id}', 'AccomodationController@ordersReturn');
+	
+	Route::get('menu/{id}',"AccomodationController@GalleryDetails");
+	Route::patch('/menu/mycart/{id}/changeQty',"AccomodationController@updateCart");
+	Route::delete('menu/mycart/{id}/delete',"AccomodationController@deleteCart");
+	Route::post('/addToCart/{id}',"AccomodationController@addToCart");
 	Route::delete('/menu/{id}/delete',"AccomodationController@deleteItem");
 });
 

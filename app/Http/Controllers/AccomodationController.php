@@ -143,10 +143,10 @@ class AccomodationController extends Controller
     }
 
     public function permanentlyDeleteItem($id){
-    $item = Accomodation::withTrashed()->find($id);
-    $item->forceDelete();
-    Session::flash("success_message","Item successfully deleted");
-    return redirect('/restore');
+        $item = Accomodation::withTrashed()->find($id);
+        $item->forceDelete();
+        Session::flash("success_message","Item successfully deleted");
+        return redirect('/restore');
     }
 
     public function addToCart($id, Request $request){
@@ -222,14 +222,6 @@ class AccomodationController extends Controller
         return view('cart.checkout',compact("item_cart","total","user","order"));
     }
 
-    // public function showBorrowForm(){
-    //     $user = User::all();
-    //     $order = Order::all();
-    //     return view('cart.borrow_form',compact("user","order"));
-    // }
-
-
-
     public function checkout() {
         $order = new Order;
         $order->user_id = Auth::user()->id;
@@ -252,32 +244,19 @@ class AccomodationController extends Controller
         return view('cart.confirmation',compact("order"));
     }
 
+    public function showUserOrderDetails(){
+        $details=Order::where("orders.user_id", Auth::user()->id)->get();
 
-    public function showOrders(){
-        $orders = Order::all();
-        $users = User::all();
-        return view('gallery.orders',compact('orders','users'));
-        // $orders = Order::where("orders.user_id",Auth::user()->id)->get();
-        // return view("gallery.orders",compact("orders"));
+        // $statuses = Order::table('orders')
+        //     ->join('statuses', 'statuses.id', '=', 'orders.status_id')
+        //     ->select('orders.*', 'orders.name')
+        //     ->get();
+
+// SELECT o.id, o.transaction_code, o.status_id, s.name AS status FROM orders o JOIN statuses s ON (o.status_id = s.id)
+
+        return view("gallery.order_details", compact("details"));
+        // return view("gallery.order_details", compact("orders","statuses"));
     }
-
-
-    // public function showOrders(){
-
-
-        // $user = User::find(1);
-        // $friends_votes = $user->friends()
-        //     ->with('user') // bring along details of the friend
-        //     ->join('votes', 'votes.user_id', '=', 'friends.friend_id')
-        //     ->get(['votes.*']); // exclude extra details from friends table
-    // }
-
-// $order_query = "SELECT o.id, o.transaction_code, o.status_id, s.name AS status FROM orders o JOIN statuses s ON (o.status_id = s.id);";
-// $orders = mysqli_query($conn, $order_query);
-// foreach ($orders as $order)
-
-
-
 
 
     public function search(){
@@ -296,13 +275,125 @@ class AccomodationController extends Controller
                     return view("gallery.gallery")->withMessage("No Item Found!");
                 }   
             }
-
     }
 
+    public function showAdminOrderDetails(){
+        // $orders=Order::all()
+        // ->orwhere("orders.status_id",  '=', "statuses.id")
+        // ->get();
+        $orders = Order::all();
+        //     ->join('statuses', 'statuses.id', '=', 'orders.status_id')
+        //     ->select('status.name')
+        //     ->get();
+        return view("admin.admin_order_details",compact("orders"));
+    }
 
-}
-    // public function showGallery(){
-    //     $categories = Category::all();
-    //     $details = Accomodation::all();
-    //     return view('gallery.gallery',compact("details"));
+    public function ordersCancel($id){
+        $order_status_id = Order::find($id);
+        if($order_status_id->status_id == 1){
+            $order_status_id->status_id = 2;
+            $order_status_id->save();
+        }
+        return redirect("/user/orders");
+    }
+    public function ordersReturn($id){
+        $order_status_id = Order::find($id);
+        if($order_status_id->status_id == 4){
+            $order_status_id->status_id = 3;
+            $order_status_id->save();
+        }
+        return redirect("/user/orders");
+    }
+
+    public function ordersApprove($id){
+        $order_status_id = Order::find($id);
+        if($order_status_id->status_id == 1){
+            $order_status_id->status_id = 4;
+            $order_status_id->save();
+        }
+        return redirect("/admin/orders");
+    }
+
+        public function ordersReject($id){
+        $order_status_id = Order::find($id);
+        if($order_status_id->status_id == 1){
+            $order_status_id->status_id = 5;
+            $order_status_id->save();
+        }
+        return redirect("/admin/orders");
+    }
+
+        public function ordersConfirm($id){
+        $order_status_id = Order::find($id);
+        if($order_status_id->status_id == 3){
+            $order_status_id->status_id = 6;
+            $order_status_id->save();
+        }
+        return redirect("/admin/orders");
+    }
+
+    // public function userOrdersSearch(){
+
+    //     $input = Input::get('search');
+    //         if ($input != " ") {
+    //             $result = Order::where('id','LIKE','%'.$input.'%')
+    //             ->orWhere('transaction_code','LIKE','%'.$input.'%')
+    //             ->get();
+
+    //             if (count($result)>0) {
+    //                 return view("gallery.order_details")->withDetails($result)->withQuery($input);
+    //             }else{
+    //                 return view("gallery.order_details")->withMessage("No Item Found!");
+    //             }   
+    //         }
     // }
+
+    public function userOrdersSearch(){
+
+        $input = Input::get('search');
+            if ($input != " ") {
+                $result = Order::with('Status')
+                ->where('status_id', 1 || 2 || 3)
+                ->whereHas('Status', function($q){
+                    $q->where('name','borrowed','cancelled');
+                    })
+                ->orwhere('id','LIKE','%'.$input.'%')
+                ->orWhere('transaction_code','LIKE','%'.$input.'%')
+                ->get();
+
+                if (count($result)>0) {
+                    return view("gallery.order_details")->withDetails($result)->withQuery($input);
+                }else{
+                    return view("gallery.order_details")->withMessage("No Item Found!");
+                }   
+            }
+    }
+// $user = User::with('Profile')->where('status', 1)->whereHas('Profile', function($q){
+//     $q->where('gender', 'Male');
+// })->get();
+
+
+// $foods = Food::join('food_ingredient', 'food_ingredient.food_id','=', 'food.id')
+//          ->join('ingredients','ingredient.id','=','food_ingredient.ingredient.id')
+//          ->where('ingredient.title', 'LIKE', '%' . $search . '%') ...
+}
+
+        // $searchText = 'test text';
+        // Product::with('owner')->where(function($query) use ($searchText)
+        // {
+        //     $query->where('product_name', 'LIKE', '%' . $searchText . '%');
+
+        //     $columns = ['product_code', 'place_location', 'remark'];
+
+        //     foreach ($columns as $column ) {
+        //         $query->orWhere($column, 'LIKE', '%' . $searchText . '%');
+        //     }
+
+        //     $query->orWhereHas('owner', function($q) use ($searchText) {
+        //         $q->where(function($q) use ($searchText) {
+        //             $q->where('name', 'LIKE', '%' . $searchText . '%');
+        //             $q->orWhere('company_name', 'LIKE', '%' . $searchText . '%');
+        //         });
+        //     });
+
+        // });

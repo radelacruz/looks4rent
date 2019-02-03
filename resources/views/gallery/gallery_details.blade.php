@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','Item Details')
 @section('content')
+
 	<div class="container">
 		{{-- {{dd($item)}} --}}
 		<h1 class="text-center my-3">Item Details</h1>
@@ -20,8 +21,26 @@
 						<p>Item Description: {{$item->description}}</p>
 						<p>Item Price: {{$item->price}}</p>
 						<p>Item Deposit: {{$item->deposit}}</p>
+						<p>Available Item: {{$item->available}}</p>
+						@if ( Auth::check() && Auth::user()->role_id==1 )
 						<a href="/menu/{{$item->id}}/edit" class="btn-primary btn mx-2">Edit</a>
 						<button class="btn btn-danger mx-2" data-toggle="modal" data-target="#confirmDelete">Delete</button>
+						@else 
+						<a href="/gallery" class="btn-primary btn mx-2">Go back to gallery</a>
+						<form method="POST" action="/addToCart/{{$item->id}}">
+							{{csrf_field()}}
+							<div class="">
+								@if($item->available != 0)
+									<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" max="{{$item->available}}">
+									<button type="submit" class="btn btn-success">Reserve Now</button>
+								@else
+									<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" disabled>
+									<button type="submit" class="btn btn-success" disabled>Reserve</button>
+								@endif
+							</div>
+						</form>
+						@endif
+
 					</div>
 
 				</div>

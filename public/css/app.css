@@ -5,17 +5,56 @@
 	/*font-family: 'Federant', cursive;*/
 }
 
-#navbar{
-	background-color: #1c1d1d;
-	padding: 5px;
-	font-family: 'Federant', cursive;
+body{
+	/*background-color:  #1c1d1d;*/
 }
 
-#navbar a{
-	color: #c3a663;
+.navbar{
+    /*border-bottom-width:1px;  */
+    /*border-bottom-style:solid;*/
+    /*border-color: #c3a663;*/
+
+}
+#app{
+    /*box-shadow: 5px 5px 5px 5px #c3a663;*/
+}
+#navbar{
+	/*background-color: #1c1d1d;*/
+	/*padding: 5px;*/
+	/*font-family: 'Federant', cursive;*/
+    /*margin: 0 !important;*/
+    /*padding: 0 !important;*/
+   	background-color: #FE938C;
+	padding: 5px;
+	font-family: 'Federant', cursive; 
+}
+a > strong{
+	color: #E51666;
+	font-family: 'Playball', cursive;
+	font-size: 40px;
+	text-shadow: 2px 2px 4px #000000;
+	padding-top: 50px;
+}
+
+#navbar > a{
+	/*color: #c3a663;*/
+	color: #E51666;
+	font-family: 'Playball', cursive;
+	font-size: 40px;
+	text-shadow: 2px 2px 4px #000000;
+	padding: 0;
+}
+
+#navbarSupportedContent a:hover{
+	/*text-decoration: underline;*/
+/*	font-size: 15px;*/
+    border-bottom: 2px solid white;
 }
 
 /*#navbar a{
 	color: #c3a663 !important;
 }*/
 
+#search{
+	background-color: transparent;
+}

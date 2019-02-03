@@ -59,6 +59,12 @@
 				<form action="" method="POST">
 					{{csrf_field()}}
 					<div class="row">
+					{{-- <div class="col-xs-12 col-sm-4">
+					<h5 class="italic">Event Date</h5>
+					<p class="instruction">Select event date</p>
+					<p>		<span class="wpcf7-form-control-wrap date-time"><input type="text" name="date-time" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="datetimepicker" aria-required="true" aria-invalid="false" /></span>
+					</p>
+					</div> --}}
 						<div class="col-md-12">
 							<div class="form-group row mb-0 text-center">
 								<div class="col-md-6 offset-md-4">
