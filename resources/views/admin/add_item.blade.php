@@ -2,7 +2,7 @@
 @section('title','Add Item')
 @section('content')
 	<div class="container">
-		<h1 class="text-center">Add New Item</h1>
+		<h4 class="text-center py-3">Add New Item</h4>
 		<div class="container">
 			<div class="row text-danger">
 				@if(count($errors) > 0)

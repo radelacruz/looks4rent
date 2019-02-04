@@ -22,9 +22,6 @@ Route::get('/gallery', "AccomodationController@showGallery");
 Route::any('/search',"AccomodationController@search");
 Route::get('/admin/orders',"AccomodationController@showAdminOrderDetails");
 Route::get('/menu/categories/{id}',"CategoryController@findItems");
-Route::get('/admin/orders/approve/{id}', 'AccomodationController@ordersApprove');
-Route::get('/admin/orders/reject/{id}', 'AccomodationController@ordersReject');
-Route::get('/admin/orders/confirm/{id}', 'AccomodationController@ordersConfirm');
 
 
 Route::middleware("auth")->group(function () {
@@ -34,6 +31,7 @@ Route::middleware("auth")->group(function () {
 	Route::get('/menu/borrow/checkout',"AccomodationController@checkout");
 	Route::get('/user/orders',"AccomodationController@showUserOrderDetails");
 	Route::any('/user/orders/search',"AccomodationController@userOrdersSearch");
+
 	Route::get('/user/orders/cancel/{id}', "AccomodationController@ordersCancel");
 	Route::get('/user/orders/return/{id}', 'AccomodationController@ordersReturn');
 	
@@ -56,7 +54,11 @@ Route::middleware("admin")->group(function (){
 	Route::get('/category',"AccomodationController@showAddCategoryForm");
 	Route::post('/category',"AccomodationController@saveCategoryForm");
 	Route::get('/restore',"AccomodationController@showDeletedItem");
+	Route::any('/admin/orders/search',"AccomodationController@adminOrdersSearch");
 	// Route::get('/user', "RoleController@userAdminPage");
+	Route::get('/admin/orders/approve/{id}', 'AccomodationController@ordersApprove');
+	Route::get('/admin/orders/reject/{id}', 'AccomodationController@ordersReject');
+	Route::get('/admin/orders/confirm/{id}', 'AccomodationController@ordersConfirm');
 	Route::get('/menu/{id}/edit',"AccomodationController@showEditForm");
 	Route::patch('/menu/{id}/edit',"AccomodationController@editItem");
 	Route::delete('/menu/{id}/permanentlydelete',"AccomodationController@permanentlyDeleteItem");

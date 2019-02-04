@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Confirmation')
 @section('content')
-	<h1 class="text-center">Confirmation Page</h1>
+	<h4 class="text-center py-3">Confirmation Page</h4>
 		<div class="container">
 			<div class="row text-danger">
 				@if(count($errors) > 0)
@@ -12,10 +12,10 @@
 			</div>
 
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-12 text-center">
 					<h3>Reference No.: {{$order->transaction_code}}</h3>
 
-					<p>Please print this when you get your item(s).</p>
+					<p><span class="text-danger">*</span>Please wait while your request is being processed.</p>
 
 					<a class="btn btn-primary" href="/gallery">Go back to gallery</a>	
 				</div>

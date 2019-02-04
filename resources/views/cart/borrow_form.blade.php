@@ -3,7 +3,7 @@
 @section('content')
 {{-- {{$user}} --}}
 	<div class="container">
-		<h1 class="text-center">Checkout Page</h1>
+		<h4 class="text-center py-3">Checkout Page</h4>
 		<hr>
 		<div class="container">
 			<div class="row text-danger">

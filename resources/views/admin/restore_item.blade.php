@@ -2,7 +2,7 @@
 @section('title','Deleted Item')
 @section('content')
 	<div class="container">
-		<h1 class="text-center">Deleted Item</h1>
+		<h4 class="text-center py-4">Deleted Item</h4>
 			@if(Session::has("success_message"))
 				<div class="alert alert-success text-center">{{Session::get("success_message")}}</div>
 			@endif

@@ -3,22 +3,25 @@
 @section('search')
 
 	<form action="/search" method="POST" role="search">
-	    {{ csrf_field() }}
-	    <div class="input-group">
-	        <input id="search" type="text" class="form-control" name="search"
-	            placeholder="Search...">
-	            <span class="input-group-btn">
-				<button class="btn btn-default-sm" type="submit">
-				<i class="fa fa-search"><span class="glyphicon glyphicon-search"></span></i>
-				</button>
-	        </span>
-	    </div>
+		{{ csrf_field() }}
+		<div id="search-border" class="input-group">
+			<input id="search" type="text" class="form-control" name="search"
+				placeholder="Search...">
+				<span class="input-group-btn">
+					<button class="btn btn-default-sm" type="submit">
+						<i class="fa fa-search"><span class="glyphicon glyphicon-search"></span></i>
+					</button>
+				</span>
+			{{-- <input id="search" type="text"class="textbox" placeholder="Search.." name="search">
+			<button type="submit" ><i class="fa fa-search"></i></button> --}}
+		</div>
 	</form>
+
 @endsection
 
 @section('content')
 	<div class="container">
-		<h1 class="text-center">Gallery</h1>
+		<h4 class="text-center py-3">Gallery</h4>
 		@if(Session::has("success_message"))
 			<div class="alert alert-success text-center">{{Session::get("success_message")}}</div>
 		@endif
@@ -73,7 +76,7 @@
 												@if($indiv_item->available != 0)
 													<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-outline-primary">View Details</a>
 													<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" max="{{$indiv_item->available}}">
-													<button type="submit" class="btn btn-success">Resserve Now</button>
+													<button type="submit" class="btn btn-success">Reserve Now</button>
 												@else
 													<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-outline-primary">View Details</a>
 													<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" disabled>

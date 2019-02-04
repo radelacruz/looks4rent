@@ -1,5 +1,5 @@
-@extends('app')
-@section('content')
+@extends('layouts.app')
+@section('footer')
 	<footer id="footer" class="row px-3 justify-content-center text-light mt-5"> <!-- bg-dark fixed-bottom  -->
 		<small class="py-5"> <!-- class="text-muted" -->
 			<div id="disclaimer" class="text-center">
