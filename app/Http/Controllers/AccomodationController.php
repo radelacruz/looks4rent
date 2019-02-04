@@ -64,6 +64,7 @@ class AccomodationController extends Controller
 	}
 
 
+
 	public function showEditForm($id){
 		$item = Accomodation::find($id);
 		$categories = Category::all();
@@ -122,6 +123,21 @@ class AccomodationController extends Controller
 		Session::flash("success_message","Category added successfully");
 		return redirect('/category');
 	}
+
+    // public function saveDate(Request $request){
+    //     $rules = array(
+    //         "start_date" => "required",
+    //         "end_date" => "required"
+    //     );
+
+    //     $this->validate($request,$rules);
+    //     $order = new Order;
+
+    //     $item->start_date=$request->start_date;
+    //     $item->end_date=$request->end_date;
+    //     $item->save();
+    //     return redirect('/cart.checout');
+    // }
 	public function deleteItem($id){
 		$item = Accomodation::find($id);
 		$item->delete();
@@ -222,11 +238,24 @@ class AccomodationController extends Controller
 		return view('cart.checkout',compact("item_cart","total","user","order"));
 	}
 
-	public function checkout() {
+    // public function checkout(Request $request) {
+	public function checkout(Request $request) {
+        // $rules = array(
+        //     "start_date" => "required",
+        //     "end_date" => "required"
+        // );
+
+        // $this->validate($request,$rules);
+
+
 		$order = new Order;
 		$order->user_id = Auth::user()->id;
 		$order->total=0;
-		$order->transaction_code=0;
+        $order->transaction_code=0;
+
+        $order->start_date = 0;
+        $order->end_date = 0;
+
 		$order->status_id = 1; 
 		$order->save();
 		$total=0;
@@ -237,7 +266,11 @@ class AccomodationController extends Controller
 		}
 		$order->total = $total;
 		$latestOrder = Order::orderBy('created_at','DESC')->first();
-		$order->transaction_code = 'Looks4Rent-'.time().'-'.str_pad($latestOrder->id + 1, 8, "0", STR_PAD_LEFT);
+        $order->transaction_code = 'Looks4Rent-'.time().'-'.str_pad($latestOrder->id + 1, 8, "0", STR_PAD_LEFT);
+  //       $order->start_date = $request->start_date;
+		// $order->end_date = $request->end_date;
+        $order->start_date = "Not yet OK";
+        $order->end_date = "Not yet OK";
 		$order->save();
 
 		Session::forget('cart');
@@ -293,7 +326,8 @@ class AccomodationController extends Controller
 		if($order_status_id->status_id == 1){
 			$order_status_id->status_id = 2;
 			$order_status_id->save();
-		}
+            Session::flash("success_remove","This order has been successfully cancelled");
+        }
 		return redirect("/user/orders");
 	}
 	public function ordersReturn($id){

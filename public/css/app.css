@@ -7,9 +7,14 @@
 	/*font-family: 'Federant', cursive;*/
 }
 
+.row{
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
 body{
 	/*background-color:  #1c1d1d;*/
-	background-color:  #464a49;
+	background-color:  #5f030c;
+	/*background-color:  #464a49;*/
 }
 
 .navbar{
@@ -73,7 +78,7 @@ li > a{
 }*/
 
 #search{
-	background-color: transparent;
+	background-color: transparent !important;
 }
 
 .btn-default-sm{
@@ -133,4 +138,90 @@ h4 {
 	/*margin-bottom: 10px !important;*/
 	/*margin-left: 20px !important;*/
 
+}
+
+.btn-OK{
+	background-color: #2f2f2f;
+	color: #c3a663;
+	border: 1px solid #c3a663;
+}
+.btn-NG{
+	background-color: #2f2f2f;
+	color: #9b1b1f;
+	border: 1px solid #9b1b1f;
+}
+
+input,
+textarea{
+	border:1px solid #c3a663 !important;
+	background-color: #f1d491 !important;
+	color: black  !important;
+}
+
+.btn-OK:hover{
+	color: green;
+	text-decoration: underline;
+}
+.btn-NG:hover{
+	color: red;
+	text-decoration: underline;
+}
+
+.card-title,
+.modal-header{
+	background-color: #2f2f2f;
+	color: #c3a663;
+	margin-bottom: 0; 
+}
+
+.modal-header{
+	border-bottom: 1px solid #c3a663;
+}
+
+.modal-footer{
+	border-top: 1px solid #c3a663;
+}
+.card-body,
+.modal-body{
+	/*background-color:  #464a49;*/
+	background-color:  #5f030c;
+	border-top: 1px solid #c3a663;
+	border-bottom: 1px solid #c3a663;
+}
+
+.card-footer,
+.modal-footer{
+	background-color:  #464a49;
+}
+
+.card{
+	border: 5px groove #c3a663;
+	box-shadow: 5px 5px 5px 5px #c3a663;
+}
+
+
+.list-group{
+	/*border:1px solid #c3a663;*/
+
+}
+.list-group-item{
+	background-color: #f1d491;
+	color: black;
+	padding: 5px;
+	border: 1px solid #c3a663;
+}
+
+#left-gallery{
+	width: 100%;
+}
+select{
+	background-color: #f1d491 !important;
+}
+
+option{
+	color: black;
+}
+
+label{
+	color: #c3a663;
 }

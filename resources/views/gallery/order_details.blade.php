@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<h4 class="text-center py-3">Orders Details</h4>
-		<hr>
+		{{-- <hr> --}}
 		<div class="row">
 			<div class="col-sm-12   mb-4">
 				<form action="/user/orders/search" method="POST" role="search">
@@ -47,9 +47,11 @@
 									<td>
 										<div class="row">
 											@if($order->status->name == "borrowed")
-												<a href="/user/orders/cancel/{{$order->id}}" class="btn btn-danger">Cancel</a>										
+												<a href="/user/orders/cancel/{{$order->id}}" class="btn btn-danger">Cancel</a>
 											@elseif($order->status->name == "approved")
 												<a href="/user/orders/return/{{$order->id}}" class="btn btn-success">Return</a>
+{{-- 											@elseif($order->status->name == "returned")
+												<small>Waiting for confirmation</small> --}}
 											@endif
 										</div>
 									</td>

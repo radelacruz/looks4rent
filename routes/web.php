@@ -18,6 +18,11 @@ Route::get('/', function () {
 Route::get('/error',function(){
 	return view ('error');
 });
+
+Route::get('/borrow',function(){
+	return view ('/cart.confirmation');
+});
+
 Route::get('/gallery', "AccomodationController@showGallery");
 Route::any('/search',"AccomodationController@search");
 Route::get('/admin/orders',"AccomodationController@showAdminOrderDetails");
@@ -28,6 +33,9 @@ Route::middleware("auth")->group(function () {
 	Route::get('menu/clearcart',"AccomodationController@clearCart");
 	Route::get('menu/mycart',"AccomodationController@showCart");
 	Route::get('/menu/borrow',"AccomodationController@showBorrowForm");
+
+	// Route::post('/menu/borrow/date',"AccomodationController@saveDate");
+
 	Route::get('/menu/borrow/checkout',"AccomodationController@checkout");
 	Route::get('/user/orders',"AccomodationController@showUserOrderDetails");
 	Route::any('/user/orders/search',"AccomodationController@userOrdersSearch");

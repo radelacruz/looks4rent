@@ -2,7 +2,7 @@
 @section('title','Edit Item')
 @section('content')
 	<div class="container">
-		<h1 class="text-center">Edit Item</h1>
+		<h4 class="text-center">Edit Item</h4>
 		<div class="container">
 			<div class="row text-danger">
 				@if(count($errors) > 0)
@@ -57,7 +57,7 @@
 						<label for="image">Upload Image:</label>
 						<input type="file" name="image" class="form-control" id="image">
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">Edit Item</button>
+					<button type="submit" class="btn btn-OK btn-block">Edit Item</button>
 					
 				</div>
 				</div>

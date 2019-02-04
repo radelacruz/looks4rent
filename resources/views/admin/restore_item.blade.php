@@ -6,7 +6,6 @@
 			@if(Session::has("success_message"))
 				<div class="alert alert-success text-center">{{Session::get("success_message")}}</div>
 			@endif
-		<hr>
 		<div class="row">
 			@if($item != null)
 			<div class="col-sm-12">
@@ -18,11 +17,11 @@
 								<div class="card h-100">
 									<div class="card-body">
 										<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:150px">
-										<h5 class="card-title">{{$indiv_item->name}}</h5>
+										<h5>{{$indiv_item->name}}</h5>
 									</div>
 									<div class="card-footer">
-										<a href="/menu/{{$indiv_item->id}}/restore" class="btn btn-success">Restore Item</a>
-										<button class="btn btn-danger" data-toggle="modal" data-target="#confirmPermanentlyDelete">Permanently Delete</button>
+										<a href="/menu/{{$indiv_item->id}}/restore" class="btn btn-block btn-OK">Restore Item</a>
+										<button class="btn btn-NG btn-block" data-toggle="modal" data-target="#confirmPermanentlyDelete">Permanently Delete</button>
 									</div>
 								</div>
 							</div>
@@ -36,7 +35,7 @@
 											<p>Are you sure you want to permanently delete this movie?</p>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+											<button type="button" class="btn btn-OK" data-dismiss="modal">Cancel</button>
 											<form method="POST" action="/menu/{{$indiv_item->id}}/permanentlydelete">
 												{{csrf_field()}}
 												{{method_field("DELETE")}}

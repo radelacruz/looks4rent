@@ -4,39 +4,39 @@
 
 	<div class="container">
 		{{-- {{dd($item)}} --}}
-		<h1 class="text-center my-3">Item Details</h1>
-		<hr>
+		<h4 class="text-center my-3">Item Details</h4>
 		@if(Session::has("edit_message"))
 			<div class="alert alert-success">{{Session::get("edit_message")}}</div>
 		@endif
 		<div class="row">
-			<div class="col-sm-12 text-center">
-				<img class="img-fluid d-block" src="/{{$item->image_path}}" style="height: 400px">
+			<div class="col-sm-6 text-center">
+				<img class="img-fluid d-block" src="/{{$item->image_path}}" style="height: 450px; width: 100%; border: 5px groove #c3a663;">
 			</div>
 
-			<div class="col-sm-8">
-				<div class="card" style="height: 400px">
-					<div class="card-body">
-						<h2 class="card-title">Item Name: {{$item->name}}</h2>
+			<div class="col-sm-6">
+				<div class="card" style="height: 450px">
+					<div class="card-body p-2">
+						<h2>Item Name: {{$item->name}}</h2>
 						<p>Item Description: {{$item->description}}</p>
 						<p>Item Price: {{$item->price}}</p>
 						<p>Item Deposit: {{$item->deposit}}</p>
 						<p>Available Item: {{$item->available}}</p>
 						@if ( Auth::check() && Auth::user()->role_id==1 )
-						<a href="/menu/{{$item->id}}/edit" class="btn-primary btn mx-2">Edit</a>
-						<button class="btn btn-danger mx-2" data-toggle="modal" data-target="#confirmDelete">Delete</button>
+						<a href="/menu/{{$item->id}}/edit" class="btn-OK btn mx-2">Edit</a>
+						<button class="btn btn-NG mx-2" data-toggle="modal" data-target="#confirmDelete">Delete</button>
 						@else 
-						<a href="/gallery" class="btn-primary btn mx-2">Go back to gallery</a>
+						
 						<form method="POST" action="/addToCart/{{$item->id}}">
 							{{csrf_field()}}
 							<div class="">
 								@if($item->available != 0)
-									<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" max="{{$item->available}}">
-									<button type="submit" class="btn btn-success">Reserve Now</button>
+									<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 30%" max="{{$item->available}}">
+									<button type="submit" class="btn btn-OK">Reserve Now</button>
 								@else
-									<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 100px" disabled>
-									<button type="submit" class="btn btn-success" disabled>Reserve</button>
+									<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 30%" disabled>
+									<button type="submit" class="btn btn-OK" disabled>Reserve</button>
 								@endif
+								<a href="/gallery" class="btn-OK btn mx-2">Go back to gallery</a>
 							</div>
 						</form>
 						@endif
@@ -55,7 +55,7 @@
 								<p>Are you sure you want to delete this item?</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-OK" data-dismiss="modal">Cancel</button>
 								<form method="POST" action="/menu/{{$item->id}}/delete">
 									{{csrf_field()}}
 									{{method_field("DELETE")}}
