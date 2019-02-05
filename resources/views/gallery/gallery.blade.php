@@ -75,12 +75,12 @@
 					<div class="row">
 						@foreach($details as $indiv_item)
 							<div class="col-sm-4 my-4 text-center">
-								<div class="card h-100">
+								<div class="card h-100" >
 									<div class="card-title">
 										<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-OK">View Details</a>
 									</div>
 									<div class="card-body p-0">
-										<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:150px; width:100%;" data-toggle="modal" data-target="#modal-{{$indiv_item->id}}">
+										<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:350px; width:100%;" data-toggle="modal" data-target="#modal-{{$indiv_item->id}}">
 										<h5 style="background-color: #464a49; margin-bottom: 0; color: #c3a663;">{{$indiv_item->name}}</h5>
 										@if($indiv_item->available != 0)
 											<p style="background-color: #464a49; margin-bottom: 0; color: #c3a663;">Available: {{$indiv_item->available}}</p>
@@ -101,7 +101,7 @@
 												</header> <!-- end modal header -->
 
 												<div class="modal-body">
-													<img class="card-img-top img-fluid5" src="/{{$indiv_item->image_path}}" style="height: 500px;">
+													<img class="card-img-top img-fluid5" src="/{{$indiv_item->image_path}}" style="height: 500px; box-shadow: 2px 2px 3px 3px #c3a663;">
 												</div> <!-- end modal-body -->
 											</div> <!-- end modal-content -->
 										</div>
@@ -144,5 +144,9 @@
 		</div> {{-- end row --}}
 	</div>{{--  end container --}}
 
+@endsection
+
+@section('b2top')
+	<a class="float-right" id="back" href="#navbar">Back to Top</a>
 @endsection
 
