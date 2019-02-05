@@ -36,9 +36,10 @@ Route::middleware("auth")->group(function () {
 
 	// Route::post('/menu/borrow/date',"AccomodationController@saveDate");
 
-	Route::get('/menu/borrow/checkout',"AccomodationController@checkout");
+	Route::post('/menu/borrow/checkout',"AccomodationController@checkout");
 	Route::get('/user/orders',"AccomodationController@showUserOrderDetails");
 	Route::any('/user/orders/search',"AccomodationController@userOrdersSearch");
+	Route::get('/menu/add',"AccomodationController@showAddItemForm");
 
 	Route::get('/user/orders/cancel/{id}', "AccomodationController@ordersCancel");
 	Route::get('/user/orders/return/{id}', 'AccomodationController@ordersReturn');
@@ -57,8 +58,8 @@ Route::middleware("auth")->group(function () {
 // }
 
 Route::middleware("admin")->group(function (){
-	Route::get('menu/add',"AccomodationController@showAddItemForm");
-	Route::post('menu/add',"AccomodationController@saveItems");
+	Route::get('/menu/add',"AccomodationController@showAddItemForm");
+	Route::post('/menu/add',"AccomodationController@saveItems");
 	Route::get('/category',"AccomodationController@showAddCategoryForm");
 	Route::post('/category',"AccomodationController@saveCategoryForm");
 	Route::get('/restore',"AccomodationController@showDeletedItem");

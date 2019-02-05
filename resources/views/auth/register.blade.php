@@ -5,9 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">{{ __('Register') }}</div>
+                <div class="card-header text-center" style="background-color: #2f2f2f; color: #c3a663;">
+                    <h4>{{ __('Register') }}</h4>
+                </div>
 
-                <div class="card-body">
+                <div class="card-body" style="background-color:  #464a49;">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -91,7 +93,7 @@
 
                         <div class="form-group row mb-0 text-center">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-OK">
                                     {{ __('Register') }}
                                 </button>
                             </div>

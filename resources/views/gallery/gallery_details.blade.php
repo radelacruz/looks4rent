@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="col-sm-6">
-				<div class="card" style="height: 450px">
+				<div  class="card" style="height: 450px">
 					<div class="card-body p-2">
 						<h2>Item Name: {{$item->name}}</h2>
 						<p>Item Description: {{$item->description}}</p>
