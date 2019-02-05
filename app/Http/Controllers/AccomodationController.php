@@ -240,13 +240,13 @@ class AccomodationController extends Controller
 
     // public function checkout(Request $request) {
 	public function checkout(Request $request) {
-        // $rules = array(
-        //     "start_date" => "required",
-        //     "end_date" => "required"
-        // );
+        $rules = array(
+            "start_date" => "required",
+            "end_date" => "required"
+        );
 
-        // $this->validate($request,$rules);
-
+        $this->validate($request,$rules);
+        // dd($request->start_date);
 
 		$order = new Order;
 		$order->user_id = Auth::user()->id;
@@ -258,6 +258,7 @@ class AccomodationController extends Controller
 
 		$order->status_id = 1; 
 		$order->save();
+		
 		$total=0;
 		foreach(Session::get('cart') as $item_id => $quantity) {
 			$order->accomodations()->attach($item_id, ['quantity'=>$quantity]);
@@ -267,14 +268,15 @@ class AccomodationController extends Controller
 		$order->total = $total;
 		$latestOrder = Order::orderBy('created_at','DESC')->first();
         $order->transaction_code = 'Looks4Rent-'.time().'-'.str_pad($latestOrder->id + 1, 8, "0", STR_PAD_LEFT);
-  //       $order->start_date = $request->start_date;
-		// $order->end_date = $request->end_date;
-        $order->start_date = "Not yet OK";
-        $order->end_date = "Not yet OK";
+        $order->start_date = $request->start_date;
+		$order->end_date = $request->end_date;
+        // $order->start_date = "Not yet OK";
+        // $order->end_date = "Not yet OK";
 		$order->save();
 
-		Session::forget('cart');
-		return view('cart.confirmation',compact("order"));
+		// Session::forget('cart');
+
+		return view('cart.confirmation',compact("order" ));
 	}
 
 	public function showUserOrderDetails(){
@@ -347,7 +349,6 @@ class AccomodationController extends Controller
 		}
 		return redirect("/admin/orders");
 	}
-
 		public function ordersReject($id){
 		$order_status_id = Order::find($id);
 		if($order_status_id->status_id == 1){
@@ -388,7 +389,6 @@ class AccomodationController extends Controller
 	}
 
     public function adminOrdersSearch(){
-
         $input = Input::get('search');
             if ($input != " ") {
                 $result = Order::with('Status')

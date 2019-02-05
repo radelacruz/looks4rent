@@ -69,13 +69,13 @@
 			<div class="col-sm-10">
 				<div class="container my-2">
 					@if ( Auth::check() && Auth::user()->role_id==1 )
-					<a href="/menu/add" class="btn btn-block btn-OK">Add New Item</a>
+					<a href='/menu/add' class="btn btn-block btn-OK">Add New Item</a>
 					@endif
 					@if(isset($details))
 					<div class="row">
 						@foreach($details as $indiv_item)
 							<div class="col-sm-4 my-4 text-center">
-								<div class="card h-100" >
+								<div class="card h-100">
 									<div class="card-title">
 										<a href="/menu/{{$indiv_item->id}}" class="btn btn-block btn-OK">View Details</a>
 									</div>

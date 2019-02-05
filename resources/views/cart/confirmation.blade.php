@@ -35,8 +35,8 @@
 	     					<p>Full Name: {{Auth::user()->firstname ." ". Auth::user()->lastname}}</p>
 							<p>Address: {{Auth::user()->address}}</p>
 							<p>Email: {{Auth::user()->email}}</p>
-							<p>Start Date: </p>
-							<p>End Date:</p>
+							<p>Start Date: {{$order->start_date}} </p>
+							<p>End Date: {{$order->end_date}}</p>
 
 	                    </div>
 	                </div>
