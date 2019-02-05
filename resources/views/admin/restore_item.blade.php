@@ -9,15 +9,15 @@
 		<div class="row">
 			@if($item != null)
 			<div class="col-sm-12">
-				<div class="container my-5">
+				<div class="container">
 					{{-- <a href="" class="btn btn-danger">Restore All Item</a> --}}
 					<div class="row">
 						@foreach($item as $indiv_item)
 							<div class="col-sm-4 my-4 text-center">
 								<div class="card h-100">
-									<div class="card-body">
-										<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:150px">
-										<h5>{{$indiv_item->name}}</h5>
+									<div class="card-body  p-0">
+										<img src="/{{$indiv_item->image_path}}" class="img-fluid" style="height:250px; width: 100%;">
+										<h5  style="background-color: #464a49; margin-bottom: 0; color: #c3a663;">{{$indiv_item->name}}</h5>
 									</div>
 									<div class="card-footer">
 										<a href="/menu/{{$indiv_item->id}}/restore" class="btn btn-block btn-OK">Restore Item</a>

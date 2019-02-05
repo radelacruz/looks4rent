@@ -91,6 +91,8 @@ li > a{
 #search-border{
 	border: 1px solid #c3a663;
 	border-radius: 5px;
+	background-color: #2f2f2f;
+	color: #c3a663;
 }
 #search-border:hover{
 	border: 1px solid #9b1b1f;
@@ -114,8 +116,7 @@ li > a{
 }
 
 .table th{
-
-
+	color: #c3a663 !important;
   	border-bottom: 5px solid #c3a663 !important ;
 }
 tbody{
@@ -196,7 +197,7 @@ textarea{
 
 .card{
 	border: 5px groove #c3a663;
-	box-shadow: 5px 5px 5px 5px #c3a663;
+	box-shadow: 3px 3px 5px 5px #c3a663;
 }
 
 /*.card-body:hover{
@@ -232,4 +233,72 @@ option{
 
 label{
 	color: #c3a663;
+}
+
+#footer{
+	border-top: 1px solid #c3a663;
+	background-color: #2f2f2f;
+	color: #c3a663;
+	padding: 30px;
+	height: 50vh;
+}
+#disclaimer a{
+	text-decoration: none;
+	color: #c3a663;
+	/*color: white;*/
+	font-weight: bolder;
+
+}
+#social a{
+	text-decoration: none;
+	color: white;
+}
+#social{
+	padding-bottom: 10px;
+}
+/* Style all font awesome icons */
+.fa {
+	font-size: 14px;
+	width: 40px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 100%;
+	padding: 14px;
+	height: 40px;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+	opacity: 0.7;
+}
+
+/* Twitter */
+.fa-twitter {
+	background: #55ACEE;
+	color: white;
+
+}
+/* Facebook */
+.fa-facebook {
+	background: #3B5998;
+	color: white;
+}
+
+.fa-instagram {
+	background: #125688;
+	color: white;
+}
+
+.footer-hr{
+	background-color: #c3a663 !important;
+	margin: 40px;
+}
+
+#back {
+	position: fixed;
+	bottom: 5%;
+	right: 5%;
+	z-index: 1;
+	color: #c3a663;
+	text-shadow: 10px 10px 5px black;
 }
