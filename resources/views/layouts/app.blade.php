@@ -92,13 +92,13 @@
 								<a href="/gallery" class="nav-link">Gallery</a>
 							</li>
 
-							<li class="nav-item">
+							{{-- <li class="nav-item">
 								<a href="/menu/mycart" class="nav-link">Cart<span class="badge text-danger">
 									@if(Session::has('cart'))
 										{{array_sum(Session('cart'))}}
 									@endif
 								</span></a>
-							</li>
+							</li> --}}
 							
 							<li class="nav-item">
 								<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
