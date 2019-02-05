@@ -57,20 +57,20 @@
 							<div class="form-group row">
 								<label for="startDate" class="col-md-4 col-form-label text-md-right">Start Date:</label>
 								<div class="col-md-6">
-									<input type="date" id="startDate" style="border:1px solid #c3a663; background-color: #f1d491;" class="form-control{{ $errors->has('start_date') ? ' is-invalid' : '' }}" required autofocus  disabled>
+									<input type="date" id="start_date" style="border:1px solid #c3a663; background-color: #f1d491;" name="start_date"  class="form-control{{ $errors->has('start_date') ? ' is-invalid' : '' }}" form="getDate" required autofocus >
 									{{-- <span class="" id="start_date"></span> --}}
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="endDate" class="col-md-4 col-form-label text-md-right">End Date:</label>
 								<div class="col-md-6">
-									<input type="date" id="endDate" style="border:1px solid #c3a663; background-color: #f1d491;" class="form-control{{ $errors->has('end_date') ? ' is-invalid' : '' }}" required autofocus  disabled>
+									<input type="date" id="end_date" style="border:1px solid #c3a663; background-color: #f1d491;" class="form-control{{ $errors->has('end_date') ? ' is-invalid' : '' }}" name="end_date"  form="getDate" required autofocus>
 									{{-- <span class="" id="end_date"></span> --}}
 								</div>
 							</div>
-							<button type="button" class="btn" style="background-color: #2f2f2f; color: #c3a663; border: 1px solid #c3a663;" onclick="myFunction()" disabled>
+							{{-- <button type="button" class="btn" style="background-color: #2f2f2f; color: #c3a663; border: 1px solid #c3a663;" onclick="myFunction()">
 									{{ __('Confirm Date') }}
-							</button>
+							</button> --}}
 						{{-- </form> --}}
 
 
@@ -81,16 +81,18 @@
 			<div class="col-md-12 p-5">
 				<div class="text-center">
 					
-					<form action="" method="POST">
+					<form action="/menu/borrow/checkout" method="POST" id="getDate">
 						{{csrf_field()}}
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group row mb-0 text-center">
 									<div class="col-md-6 offset-md-4">
-										<span name="start_date" id="start_date"></span>
-										<span name="end_date" id="end_date"></span>
+										{{-- <input type="text" id="start_date"> --}}
+										{{-- <input type="text" id="end_date"> --}}
+										{{-- <span name="start_date" id="start_date"></span> --}}
+										{{-- <span name="end_date" id="end_date"></span> --}}
 
-										<a href="/menu/borrow/checkout" class="btn btn-OK m-2">Reserve</a>
+										<button type="submit" class="btn btn-OK m-2">Reserve</button>
 										<a href="/menu/mycart" class="btn btn-NG m-2">Cancel</a>
 									</div>
 								</div>
@@ -102,7 +104,7 @@
 		</div>
 	</div>
 
-	<script>
+{{-- 	<script>
 		function myFunction() {
 		var startDate = document.getElementById("startDate");
 		var endDate = document.getElementById("endDate");
@@ -111,17 +113,17 @@
 
 			if(startDate.value == "" && startDate.value == ""){
 				document.getElementById("start_date").style.color = "red";
-				document.getElementById("start_date").innerHTML = "Please enter a valid date";
+				document.getElementById("start_date").value = "Please enter a valid date";
 				document.getElementById("end_date").style.color = "red";
-				document.getElementById("end_date").innerHTML = "Please enter a valid date";
+				document.getElementById("end_date").value = "Please enter a valid date";
 			} else {
 				document.getElementById("start_date").style.color = "";
-				document.getElementById("start_date").innerHTML = start_date;
+				document.getElementById("start_date").value = start_date;
 				document.getElementById("end_date").style.color = "";
-				document.getElementById("end_date").innerHTML = end_date;
+				document.getElementById("end_date").value = end_date;
 			}
 		}
 
-	</script>
+	</script> --}}
 @endsection
 

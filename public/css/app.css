@@ -199,6 +199,14 @@ textarea{
 	box-shadow: 5px 5px 5px 5px #c3a663;
 }
 
+/*.card-body:hover{
+	transform: scale(1.20) !important;
+}*/
+
+/*.card:hover{
+	transform: scale(1.05);
+}
+*/
 
 .list-group{
 	/*border:1px solid #c3a663;*/
