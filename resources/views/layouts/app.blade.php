@@ -115,6 +115,10 @@
 
 							@if(Auth::user()->role_id == 2)
 								<li class="nav-item">
+									<a href="/home" class="nav-link">Home</a>
+								</li>
+							
+								<li class="nav-item">
 									<a href="/user/orders" class="nav-link">Transaction</a>
 								</li> 
 

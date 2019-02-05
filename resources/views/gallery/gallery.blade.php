@@ -48,7 +48,7 @@
 				<br>
 				<div class="form-group">
 					<label for="size" style="color: #c3a663;">Size:</label>
-					<select name="size" id="size" class="form-control">
+					<select name="size" id="size" class="form-control" disabled>
 						{{-- @foreach($categories as $category) --}}
 							<option value="{{-- {{$category->id}} --}}">{{-- {{$category->name}} --}}</option>
 						{{-- @endforeach --}}
@@ -57,7 +57,7 @@
 				<br>
 				<div class="form-group">
 					<label for="color" style="color: #c3a663;">Color:</label>
-					<select name="color" id="color" class="form-control">
+					<select name="color" id="color" class="form-control" disabled>
 						{{-- @foreach($categories as $category) --}}
 							<option value="{{-- {{$category->id}} --}}">{{-- {{$category->name}} --}}</option>
 						{{-- @endforeach --}}

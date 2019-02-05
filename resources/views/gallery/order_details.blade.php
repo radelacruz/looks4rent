@@ -8,7 +8,7 @@
 			<div class="col-sm-12   mb-4">
 				<form action="/user/orders/search" method="POST" role="search">
 					{{ csrf_field() }}
-					<div  id="search-border" class="input-group">
+					<div  id="search-border" class="input-group" >
 						<input id="search" type="text" class="form-control" name="search"
 							placeholder="Search...">
 							<span class="input-group-btn">
@@ -21,7 +21,7 @@
 			</div>
 			<div class="col-sm-12">
 				<table class="table table-striped">
-					<thead>
+					<thead style="background-color: #2f2f2f; color: #c3a663;">
 						<th>Transaction Code</th>
 						<th>Time</th>
 						<th>Total</th>
@@ -29,7 +29,7 @@
 						<th>Status</th>
 						<th>Action</th>
 					</thead>
-					<tbody>
+					<tbody  style="background-color:  #464a49;">
 						@if(isset($details))
 							@foreach($details as $order)
 								<tr>

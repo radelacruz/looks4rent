@@ -21,7 +21,7 @@
 			</div>
 			<div class="col-sm-12">
 				<table class="table table-striped">  {{-- table-responsive  --}}
-					<thead>
+					<thead style="background-color: #2f2f2f; color: #c3a663;">
 						<th>Borrowers Name</th>
 						<th>Transaction Code</th>
 						<th>Time</th>
@@ -30,7 +30,7 @@
 						<th>Status</th>
 						<th>Action</th>
 					</thead>
-					<tbody>
+					<tbody style="background-color:  #464a49;">
 						@if(isset($details))
 							@foreach($details as $order)
 							<tr>
