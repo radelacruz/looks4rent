@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Borrowed Item Details')
+@section('title','Checkout')
 @section('content')
 {{-- {{$user}} --}}
 	<div class="container">
@@ -15,11 +15,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h4 class="text-center py-3">Borrowed Item Details</h4>
+				<h4 class="text-center py-3">Item Details</h4>
 				{{-- <hr> --}}
 				{{-- {{$order}} --}}
 				<table class="table table-striped">
-					<thead>
+					<thead  style="background-color: #2f2f2f; color: #c3a663;">
 						<tr>
 							<th>Item</th>
 							<th>Quantity</th>
@@ -28,7 +28,7 @@
 							<th style="border-right: 5px solid  #c3a663 !important;">Subtotal</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody  style="background-color:  #464a49;">
 						@foreach($item_cart as $item)
 							<tr>
 								<td>{{$item->name}}</td>
@@ -39,7 +39,7 @@
 							</tr>
 						@endforeach
 					</tbody>
-					<tfoot>
+					<tfoot  style="background-color: #2f2f2f; color: #c3a663;">
 						<tr class="text-center">
 							<th colspan="12">Total: {{$total}}</th>
 						</tr>

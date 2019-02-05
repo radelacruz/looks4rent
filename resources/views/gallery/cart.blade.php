@@ -7,7 +7,7 @@
 			<div class="col-sm-12">
 				@if(Session::has('cart'))
 					<table class="table table-striped">
-						<thead>
+						<thead style="background-color: #2f2f2f; color: #c3a663;">
 							<th>Item</th>
 							<th>Quantity</th>
 							<th>Price</th>
@@ -15,7 +15,7 @@
 							<th>Subtotal</th>
 							<th style="border-right: 5px solid  #c3a663 !important;">Action</th>
 						</thead>
-						<tbody>
+						<tbody  style="background-color:  #464a49;">
 							@foreach($item_cart as $item)
 								<tr>
 									<td>{{$item->name}}</td>
@@ -44,7 +44,7 @@
 								</tr>
 							@endforeach
 						</tbody>
-						<tfoot>
+						<tfoot  style="background-color: #2f2f2f; color: #c3a663;">
 							<th colspan="12" class="text-center">Total: {{$total}}</th>			
 						</tfoot>
 					</table>
