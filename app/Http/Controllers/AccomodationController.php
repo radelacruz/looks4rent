@@ -274,7 +274,7 @@ class AccomodationController extends Controller
         // $order->end_date = "Not yet OK";
 		$order->save();
 
-		// Session::forget('cart');
+		Session::forget('cart');
 
 		return view('cart.confirmation',compact("order" ));
 	}
