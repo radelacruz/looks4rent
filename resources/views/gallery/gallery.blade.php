@@ -106,7 +106,7 @@
 											</div> <!-- end modal-content -->
 										</div>
 									</div> <!-- end modal-1 -->
-									{{-- @if ( Auth::check() && Auth::user()->role_id==2 ) --}}
+									@if ( !Auth::check() || (Auth::check() && Auth::user()->role_id !=1) )
 									<div class="card-footer text-center">
 										<form method="POST" action="/addToCart/{{$indiv_item->id}}">
 											{{csrf_field()}}
@@ -121,7 +121,7 @@
 											</div>
 										</form>
 									</div>
-									{{-- @endif --}}
+									@endif
 								</div>
 							</div>
 						@endforeach

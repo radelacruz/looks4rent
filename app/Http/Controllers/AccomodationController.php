@@ -241,8 +241,8 @@ class AccomodationController extends Controller
     // public function checkout(Request $request) {
 	public function checkout(Request $request) {
         $rules = array(
-            "start_date" => "required",
-            "end_date" => "required"
+            "start_date" => "required|date|after:yesterday",
+            "end_date" => "required|date|after:start_date"
         );
 
         $this->validate($request,$rules);
