@@ -106,22 +106,22 @@
 											</div> <!-- end modal-content -->
 										</div>
 									</div> <!-- end modal-1 -->
-									@if ( Auth::check() && Auth::user()->role_id==2 )
+									{{-- @if ( Auth::check() && Auth::user()->role_id==2 ) --}}
 									<div class="card-footer text-center">
 										<form method="POST" action="/addToCart/{{$indiv_item->id}}">
 											{{csrf_field()}}
 											<div class="">
 												@if($indiv_item->available != 0)
-													<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width: 50px;" max="{{$indiv_item->available}}">
+													<input type="number" name="quantity" title="Add Quantity" min="1" value="1" style="width: 50px;" max="{{$indiv_item->available}}">
 													<button type="submit" class="btn btn-OK">Reserve Now</button>
 												@else
-													<input type="number" name="quantity" title="Add Quantity" min="0" value="1" style="width:50px;" disabled>
+													<input type="number" name="quantity" title="Add Quantity" min="1" value="1" style="width:50px;" disabled>
 													<button type="submit" class="btn btn-OK" disabled>Reserve Now</button>
 												@endif
 											</div>
 										</form>
 									</div>
-									@endif
+									{{-- @endif --}}
 								</div>
 							</div>
 						@endforeach
