@@ -145,9 +145,6 @@
 							@endif
 
 
-
-
-
 							<li class="nav-item dropdown">
 								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 									{{ Auth::user()->firstname }} <span class="caret"></span>
@@ -163,6 +160,8 @@
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 										@csrf
 									</form>
+
+									<a class="dropdown-item" href="/myprofile/{{Auth::user()->id}}" class="nav-link">Edit Profile</a>
 								</div>
 							</li>
 						@endguest

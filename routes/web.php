@@ -49,6 +49,9 @@ Route::middleware("auth")->group(function () {
 	Route::delete('menu/mycart/{id}/delete',"AccomodationController@deleteCart");
 	Route::post('/addToCart/{id}',"AccomodationController@addToCart");
 	Route::delete('/menu/{id}/delete',"AccomodationController@deleteItem");
+
+	Route::get('/myprofile/{id}',"AccomodationController@showEditProfileForm");
+	Route::patch('/myprofile/{id}',"AccomodationController@saveMoNgaAko");
 });
 
 // if(Auth::user()->role_id == 1){

@@ -415,5 +415,31 @@ class AccomodationController extends Controller
             }
     }
 
+	public function showEditProfileForm($id){
+		$user = User::find($id);
+		return view('user.user_profile',compact("user"));
+	}
+
+	public function saveMoNgaAko($id, Request $request){
+		$user = User::find($id);
+		// $users = User::all();
+
+		$rules = array(
+			"firstname" => "required",
+			"lastname" => "required",
+			"email" => "required|string|email|max:255|unique:users,email,".$user->id,
+			"address" => "required"
+		);
+
+		$this->validate($request,$rules);
+		$user->firstname = $request->firstname;
+		$user->lastname = $request->lastname;
+		$user->address = $request->address;
+		$user->email = $request->email;
+		$user->save();
+
+		Session::flash("edit_message","Profile updated successfully");
+		return redirect("/myprofile/$id");
+	}
 
 }
