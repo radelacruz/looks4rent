@@ -15,7 +15,7 @@
 				<div class="col-sm-6">
 					<div class="card" style="border: 3px solid #c3a663;">
 	                    <div class="card-header" style="background-color: #2f2f2f; color: #c3a663;">
-	                    	<h5 class="">Reference No.: {{-- {{$order->transaction_code}} --}}</h5>
+	                    	<h5 class="">Reference No.: {{$order->transaction_code}}</h5>
 	                    	<p><i><span class="text-danger">*</span>Please wait while your request is being processed.</i></p>
 	                    </div>
 
