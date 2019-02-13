@@ -183,7 +183,7 @@
 			<div id="disclaimer" class="text-center">
 					<span>DISCLAIMER: I do not own nor claim to own any content within this site. Images in this site are from Google Images. Photos are used for training purposes and not to commercialize nor profit.</span>
 					<br>
-					<a target="_blank" href="https://radcportfolio.herokuapp.com/">Razelle Ann Dela Cruz</a> | Tuitt Coding Bootcamp <span class="font-color-main">&copy;2019 Looks4rent</span>
+					<a target="_blank" href="https://radelacruz.github.io/portfolio/">Razelle Ann Dela Cruz</a> | Tuitt Coding Bootcamp <span class="font-color-main">&copy;2019 Looks4rent</span>
 			</div>
 			<hr class="footer-hr">
 			<div id="social" class="text-center">
