@@ -52,6 +52,7 @@
 											<a href="/admin/orders/approve/{{$order->id}}" class="btn btn-success">Approve</a>
 										@elseif($order->status->name == "returned")
 											<a href="/admin/orders/confirm/{{$order->id}}" class="btn btn-success">Confirm</a>
+											{{-- <p>{{$order->accomodation->pivot->quantity}}</p> --}}
 										@endif
 									</div>
 								</td>

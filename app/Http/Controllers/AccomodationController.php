@@ -326,17 +326,12 @@ class AccomodationController extends Controller
 	}
 
 	public function ordersCancel($id){
-		$order = Order::find($id);
-		if($order->status_id == 1){
-			$order->status_id = 2;
-			$order->save();
-
-			// $item = Accomodation::find($item_id);
-			// $total += $item->price * $quantity;
-			$order->available += $quantity;
-			$order->save();
+		$order_status_id = Order::find($id);
+		if($order_status_id->status_id == 1){
+			$order_status_id->status_id = 2;
+			$order_status_id->save();
             Session::flash("success_remove","This order has been successfully cancelled");
-
+            
         }
 		return redirect("/user/orders");
 	}
