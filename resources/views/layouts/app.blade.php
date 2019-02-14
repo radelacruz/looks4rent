@@ -189,9 +189,9 @@
 			<div id="social" class="text-center">
 				<!-- start social media -->
 				<div>
-					<a target="_blank" href="https://www.twitter.com/razelleanndc" class="fa fa-twitter hvr-float mx-3"></a>
-					<a target="_blank" href="https://www.facebook.com/razelleanndc" class="fa fa-facebook hvr-float mx-3"></a>
-					<a target="_blank" href="https://www.instagram.com/razelleanndc" class="fa fa-instagram hvr-float mx-3"></a>
+					<a target="_blank" href="https://www.twitter.com/rannadc" class="fa fa-twitter hvr-float mx-3"></a>
+					<a target="_blank" href="https://www.facebook.com/ranndc" class="fa fa-facebook hvr-float mx-3"></a>
+					<a target="_blank" href="https://www.instagram.com/ranndc" class="fa fa-instagram hvr-float mx-3"></a>
 				</div> <!-- end social media -->
 
 			</div> <!-- end footer body -->

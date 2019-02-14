@@ -264,6 +264,8 @@ class AccomodationController extends Controller
 			$order->accomodations()->attach($item_id, ['quantity'=>$quantity]);
 			$item = Accomodation::find($item_id);
 			$total += $item->price * $quantity;
+			$item->available -= $quantity;
+			$item->save();
 		}
 		$order->total = $total;
 		$latestOrder = Order::orderBy('created_at','DESC')->first();
