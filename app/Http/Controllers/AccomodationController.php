@@ -264,9 +264,9 @@ class AccomodationController extends Controller
 			$order->accomodations()->attach($item_id, ['quantity'=>$quantity]);
 			$item = Accomodation::find($item_id);
 			$total += $item->price * $quantity;
-			if($quantity <= $item->available){
-				$item->available -= $quantity;
-			}
+			// if($quantity <= $item->available){
+			$item->available -= $quantity;
+			// }
 			$item->save();
 		}
 		$order->total = $total;
